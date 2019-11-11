@@ -66,11 +66,15 @@ variable "cluster_name" {
   description = "Name of Kubernetes Cluster"
 }
 
+variable "ami" {
+  description = "AMI image od"
+  default = "none"
+}
+
 variable "ssh_key_name" {
   default = "id_rsa.pub"
   description = "Id SSH public key"
 }
-
 
 /*
 * AWS EC2 Settings
@@ -97,7 +101,10 @@ variable "master_volume_size" {
   default = 30
 }
 
-
+variable "etcd_member_name" {
+  description = "etcd member name"
+  default = "etcd1"
+}
 
 variable "etcd_num" {
   default = 0
@@ -119,11 +126,6 @@ variable "kube_worker_size" {
   description = "Instance size of Kubernetes Worker Nodes"
 }
 
-variable "kube_master_size" {
-  default = "t3.small"
-  description = "Instance size of Kube Master Nodes"
-}
-
 variable "worker_public_ip_address" {
   default = false
   description = "Associate public IP address for worker instance"
@@ -132,4 +134,37 @@ variable "worker_public_ip_address" {
 variable "worker_volume_size" {
   description = "Worker Instance volume size"
   default = 30
+}
+
+variable "allow_elb" {
+  description = "Allow network to ELB"
+  default = "0.0.0.0/0"
+}
+
+variable "elb_api_port" {
+  description = "Port for AWS ELB"
+  default = 6443
+}
+
+variable "k8s_secure_api_port" {
+  description = "Secure Port of K8S API Server"
+  default = 6443
+}
+variable "empty" {
+  default = "no value"
+}
+
+variable "inventory_file" {
+  default = "./hosts"
+  description = "Where to store the generated inventory file"
+}
+
+variable "sshconfig_file" {
+  default = "./ssh_config"
+  description = "Where to store the generated ssh config file"
+}
+
+variable "username" {
+  description = "SSH user name"
+  default = "ec2-user"
 }

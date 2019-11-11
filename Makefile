@@ -15,7 +15,7 @@
 ##
 # INTERNAL VARIABLES
 ##
-version  ?= "0.12.9"
+version  ?= "0.12.12"
 os       ?= $(shell uname|tr A-Z a-z)
 ifeq ($(shell uname -m),x86_64)
   arch   ?= "amd64"
